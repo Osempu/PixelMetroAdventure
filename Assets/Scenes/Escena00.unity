@@ -164,87 +164,6 @@ Transform:
   - {fileID: 960085260}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &515449398 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5260969977003342382, guid: 31ac1a8be831a3e4dae428fd838e8660, type: 3}
-  m_PrefabInstance: {fileID: 5862176941277165016}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &515449403
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 515449398}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ae17abdb7fc25e348bc0d19b4b64e94b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &515449404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 515449398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: d191f3fb0caa7a144a31b59ae40cdfd1, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7de16663-ac76-494b-a647-9445cc3edf9b
-    m_ActionName: 'Keyboard/Move right[/Keyboard/d]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 57f251d3-0abb-4df3-860d-30c404fd6190
-    m_ActionName: 'Keyboard/Move left[/Keyboard/a]'
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 61aa5aaa-712d-432e-881b-d466942b6cd4
-    m_ActionName: 'Keyboard/Jump[/Keyboard/space]'
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Keyboard
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &960085259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1473,10 +1392,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8032564471646773117, guid: 31ac1a8be831a3e4dae428fd838e8660, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8723326290278543494, guid: 31ac1a8be831a3e4dae428fd838e8660, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.88
@@ -1520,13 +1435,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5260969977003342382, guid: 31ac1a8be831a3e4dae428fd838e8660, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 515449403}
-    - targetCorrespondingSourceObject: {fileID: 5260969977003342382, guid: 31ac1a8be831a3e4dae428fd838e8660, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 515449404}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31ac1a8be831a3e4dae428fd838e8660, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
