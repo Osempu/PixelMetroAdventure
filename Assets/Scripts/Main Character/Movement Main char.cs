@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class MovementMainchar : MonoBehaviour
@@ -7,12 +8,13 @@ public class MovementMainchar : MonoBehaviour
     [SerializeField] float JumpParameter = 50f;
     [SerializeField] int MaxNumberOfJumps = 3;
 
-    //Public variables using in animation.
-    public bool isRunning;
-    public bool hasJumped;
-    public bool isPropelledUpwards;
-    public bool isFalling;
-    public bool isWallGrabbing;
+    //Variables used for state definition.
+    bool isRunning;
+    bool hasJumped;
+    bool isAirRolling;
+    bool isFalling;
+    bool isWallGrabbing;
+    bool isOnGround;
 
     //Variables for internal reference and property modification. Make them public to show in Unity Editor.
     Animator thisCharAnimator;
@@ -38,15 +40,23 @@ public class MovementMainchar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateCertainVariables();
         UpdateAnimatorStateVariables();
         Run();
         Jump();
         ResetStateVariables();
-        currentYVelocity = thisCharRigidBody.linearVelocityY;
+    }
+    void UpdateCertainVariables()
+    {
+        if (thisCharRigidBody.linearVelocityY < -1)
+            isAirRolling = false;
     }
     void UpdateAnimatorStateVariables()
     {
         thisCharAnimator.SetBool("Is Running", isRunning);
+        thisCharAnimator.SetBool("Has Jumped", hasJumped);
+        thisCharAnimator.SetBool("Is Air Rolling", isAirRolling);
+        thisCharAnimator.SetBool("Is On Ground", isOnGround);
         thisCharAnimator.SetFloat("Vertical Velocity", thisCharRigidBody.linearVelocityY);
     }
     void ResetStateVariables()
@@ -63,16 +73,22 @@ public class MovementMainchar : MonoBehaviour
     {
         if (hasJumped)
         {
-            thisCharRigidBody.linearVelocity += new Vector2(0f, JumpParameter);
+            rigidBodyNewVelocity = new Vector2(0f, JumpParameter);
+            thisCharRigidBody.linearVelocity = rigidBodyNewVelocity;
             hasJumped = false;
+            if (currentJumpsUsed > 1)
+                isAirRolling = true;
         }
+
+        currentYVelocity = thisCharRigidBody.linearVelocityY;
+
+
     }
     void OnJump()
     {
         if (currentJumpsUsed < MaxNumberOfJumps)
         {
             hasJumped = true;
-            isPropelledUpwards = true;
             currentJumpsUsed++;
         }
     }
@@ -84,5 +100,23 @@ public class MovementMainchar : MonoBehaviour
             isRunning = false;
         else
             isRunning = true;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        string colliderTag = collision.gameObject.tag;
+        if (colliderTag == "Land" || colliderTag == "Wall")
+        {
+            isOnGround = true;
+            currentJumpsUsed = 0;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        string colliderTag = collision.gameObject.tag;
+        if (colliderTag == "Land")
+        {
+            isOnGround = false;
+        }
     }
 }
